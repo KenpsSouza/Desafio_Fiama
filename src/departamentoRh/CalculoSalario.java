@@ -68,22 +68,25 @@ public class CalculoSalario {
 			descontoIR = (baseIR * 0.275) - 869.36;
 		}
 		
-		double descontoVT = vTransporte = "S" ?  salarioBruto * 0.06 : 0;
-		double descontoVA = vAlimentacao = "S" ? 200.0 : 0;
-		double descontoVR = vRefeicao = "S" ? 250.00 : 0;
+		double descontoVT = vTransporte == 'S' ?  salarioBruto * 0.06 : 0;
+		double descontoVA = vAlimentacao == 'S' ? 200.0 : 0;
+		double descontoVR = vRefeicao == 'S' ? 250.00 : 0;
 		double descontoPlano = 0;
 		
-		if (planoSaude = "B") {
+		if (planoSaude == 'B') {
 			descontoPlano =  150.0;			
-		} else if (planoSaude = "A") {
+		} else if (planoSaude == 'A') {
 			descontoPlano = 300.0;			
-		} else if ( planoSaude = "N") {
+		} else if ( planoSaude == 'N') {
 			descontoPlano = 0;
 		} else {
 			System.out.println("Digite uma das opções !");
 		}
+		
+		
+		double totalDescontos = descontoINSS + descontoIR + descontoVT + descontoVA + descontoVR + descontoPlano;
+		double salarioLiquido = salarioBruto - totalDescontos;
 	
-			
 		
 		System.out.printf(" Desconto do INSS é: R$ %.2f\n", descontoINSS);
 		System.out.printf(" Salario base para IR é: R$ %.2f\n" , baseIR);		
@@ -92,6 +95,8 @@ public class CalculoSalario {
 	    System.out.printf(" Desconto de Vale Alimentação: R$ %.2f\n", descontoVA);
 	    System.out.printf(" Desconto de Vale Refeição: R$ %.2f\n", descontoVR);
 	    System.out.printf(" Desconto do Plano de Saúde: R$ %.2f\n", descontoPlano);
+	    System.out.println("");
+	    System.out.printf(" O Salário liquido é : R$ %.2f\n", salarioLiquido);
 
 		
 		sc.close();
