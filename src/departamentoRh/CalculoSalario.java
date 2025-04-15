@@ -86,6 +86,7 @@ public class CalculoSalario {
 		
 		double totalDescontos = descontoINSS + descontoIR + descontoVT + descontoVA + descontoVR + descontoPlano;
 		double salarioLiquido = salarioBruto - totalDescontos;
+		double percentualDesconto = (totalDescontos/salarioBruto) * 100;
 	
 		
 		System.out.printf(" Desconto do INSS é: R$ %.2f\n", descontoINSS);
@@ -95,6 +96,8 @@ public class CalculoSalario {
 	    System.out.printf(" Desconto de Vale Alimentação: R$ %.2f\n", descontoVA);
 	    System.out.printf(" Desconto de Vale Refeição: R$ %.2f\n", descontoVR);
 	    System.out.printf(" Desconto do Plano de Saúde: R$ %.2f\n", descontoPlano);
+	    System.out.println("");
+	    System.out.printf(" Percentual de desconto é : %.2f\n", percentualDesconto);
 	    System.out.println("");
 	    System.out.printf(" O Salário liquido é : R$ %.2f\n", salarioLiquido);
 
